@@ -17,7 +17,7 @@ class TodoListView(
       # If an id is provided in the GET request, retrieve the Todo item by that id
       try:
         # Check if the todo item the user wants to update exists
-        queryset = Todo.objects.get(id=id)
+        queryset = Todo.objects.get(result_id=id)
       except Todo.DoesNotExist:
         # If the todo item does not exist, return an error response
         return Response({'errors': 'This todo item does not exist.'}, status=400)
@@ -59,7 +59,7 @@ class TodoListView(
   def put(self, request, id=None):
     try:
       # Check if the todo item the user wants to update exists
-      todo_item = Todo.objects.get(id=id)
+      todo_item = Todo.objects.get(result_id=id)
     except Todo.DoesNotExist:
       # If the todo item does not exist, return an error response
       return Response({'errors': 'This todo item does not exist.'}, status=400)
@@ -86,7 +86,7 @@ class TodoListView(
   def delete(self, request, id=None):
     try:
       # Check if the todo item the user wants to update exists
-      todo_item = Todo.objects.get(id=id)
+      todo_item = Todo.objects.get(result_id=id)
     except Todo.DoesNotExist:
       # If the todo item does not exist, return an error response
       return Response({'errors': 'This todo item does not exist.'}, status=400)

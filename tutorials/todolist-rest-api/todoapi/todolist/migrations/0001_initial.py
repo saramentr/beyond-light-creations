@@ -14,13 +14,11 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Todo',
             fields=[
-                ('result', models.CharField(max_length=50)),
+                ('result', models.JSONField()),
                 ('result_id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False, unique=True)),
                 ('status', models.CharField(max_length=50)),
                 ('timeout', models.PositiveIntegerField(default=0)),                
-                ('type', models.TextField(max_length=1000)),
-                ('creation_date', models.DateTimeField(auto_now_add=True)),
-                ('last_updated', models.DateTimeField(auto_now=True)),
+                ('type', models.TextField()),
             ],
             options={
                 'db_table': 'Todos',

@@ -3,7 +3,7 @@ import uuid
 
 # Create your models here.
 class Todo(models.Model):
-    result = models.CharField(max_length=50)
+    result = models.JSONField()
     result_id = models.UUIDField(
         primary_key = True, 
         default = uuid.uuid4,
@@ -15,18 +15,6 @@ class Todo(models.Model):
     timeout = models.PositiveIntegerField(default=0)
   
     type = models.TextField(
-        max_length=1000,
-        null=False,
-        blank=False
-    )
-    creation_date = models.DateTimeField(
-        auto_now_add=True,
-        null=False,
-        blank=False
-    )
-
-    last_updated = models.DateTimeField(
-        auto_now=True,
         null=False,
         blank=False
     )

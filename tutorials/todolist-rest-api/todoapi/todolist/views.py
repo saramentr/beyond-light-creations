@@ -24,7 +24,7 @@ class TodoListView(
 
       # Serialize todo item from Django queryset object to JSON formatted data
       read_serializer = TodoSerializer(queryset)
-
+      return Response({'result':read_serializer.data['result'],'result_id':read_serializer.data['result_id'],'status':read_serializer.data['status'],'timeout':read_serializer.data['timeout']})
     else:
       # Get all todo items from the database using Django's model ORM
       queryset = Todo.objects.all()

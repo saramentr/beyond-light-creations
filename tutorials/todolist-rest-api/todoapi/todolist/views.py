@@ -5,6 +5,19 @@ from rest_framework.mixins import UpdateModelMixin, DestroyModelMixin
 from .models import Todo
 from .serializers import TodoSerializer
 
+class MyTodoListView(
+  APIView, # Basic View class provided by the Django Rest Framework
+  UpdateModelMixin, # Mixin that allows the basic APIView to handle PUT HTTP requests
+  DestroyModelMixin, # Mixin that allows the basic APIView to handle DELETE HTTP requests
+):
+  def post(self, request):
+    data_default = {'result': 'null', 'status': 'in_progress', 'timeout': 3, 'type': '1'}
+    create_serializer = TodoSerializer(data=data_default)
+    if create_serializer.is_valid():
+      todo_item_object = create_serializer.save()
+      read_serializer = TodoSerializer(todo_item_object)
+      return Response(read_serializer.data, status=201)
+    return Response(create_serializer.errors, status=400)
 
 class TodoListView(
   APIView, # Basic View class provided by the Django Rest Framework

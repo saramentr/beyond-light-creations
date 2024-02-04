@@ -5,5 +5,5 @@ from . import views
 urlpatterns = [
   path('todos/', views.TodoListView.as_view()),
   path('todos/<str:id>/', views.TodoListView.as_view()),
-  path('todos/crall/', views.MyTodoListView.as_view()),
+  path('crall/', views.MyTodoListView.as_view()),
 ]

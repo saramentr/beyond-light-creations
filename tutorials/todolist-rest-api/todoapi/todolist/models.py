@@ -12,7 +12,7 @@ class Todo(models.Model):
         )
 
     status = models.CharField(max_length=50)
-    timeout = models.PositiveIntegerField(default=0)
+    timeout = models.PositiveIntegerField(null=True)
   
     type = models.TextField(
         null=False,

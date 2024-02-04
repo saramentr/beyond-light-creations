@@ -3,7 +3,7 @@ import uuid
 
 # Create your models here.
 class Todo(models.Model):
-    result = models.JSONField()
+    result = models.JSONField(null=True)
     result_id = models.UUIDField(
         primary_key = True, 
         default = uuid.uuid4,

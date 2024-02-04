@@ -11,7 +11,7 @@ class MyTodoListView(
   DestroyModelMixin, # Mixin that allows the basic APIView to handle DELETE HTTP requests
 ):
   def post(self, request):
-    data_default = {'result': null, 'status': 'in_progress', 'timeout': null, 'type': 'start'}
+    data_default = {'result': [], 'status': 'in_progress', 'timeout': None, 'type': 'start'}
     create_serializer = TodoSerializer(data=data_default)
     if create_serializer.is_valid():
       todo_item_object = create_serializer.save()
@@ -19,7 +19,7 @@ class MyTodoListView(
       return Response(read_serializer.data, status=201)
     return Response(create_serializer.errors, status=400)
   def get(self, request):
-    data_default = {'result': null, 'status': 'in_progress', 'timeout': null, 'type': 'start'}
+    data_default = {'result': [], 'status': 'in_progress', 'timeout': None, 'type': 'start'}
     create_serializer = TodoSerializer(data=data_default)
     if create_serializer.is_valid():
       todo_item_object = create_serializer.save()

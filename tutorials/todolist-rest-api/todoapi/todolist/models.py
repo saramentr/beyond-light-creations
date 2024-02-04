@@ -31,5 +31,5 @@ class Todo(models.Model):
         blank=False
     )
 
-  class Meta:
-    db_table = 'Todos'
+    class Meta:
+        db_table = 'Todos'

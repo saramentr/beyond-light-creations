@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Todo',
             fields=[
-                ('result', models.JSONField()),
+                ('result', models.JSONField(null=True)),
                 ('result_id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False, unique=True)),
                 ('status', models.CharField(max_length=50)),
                 ('timeout', models.PositiveIntegerField(null=True)),                

@@ -4,17 +4,17 @@ from .models import Todo
 
 
 class TodoSerializer(serializers.ModelSerializer):
-  text = serializers.CharField(max_length=1000, required=True)
+  type = serializers.CharField(max_length=1000, required=True)
 
   def create(self, validated_data):
     # Once the request data has been validated, we can create a todo item instance in the database
     return Todo.objects.create(
-      text=validated_data.get('type')
+      type=validated_data.get('type')
     )
 
   def update(self, instance, validated_data):
      # Once the request data has been validated, we can update the todo item instance in the database
-    instance.text = validated_data.get('type', instance.text)
+    instance.type = validated_data.get('type', instance.type)
     instance.save()
     return instance
 

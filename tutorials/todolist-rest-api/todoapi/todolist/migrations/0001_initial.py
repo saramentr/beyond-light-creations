@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
                 ('result', models.JSONField()),
                 ('result_id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False, unique=True)),
                 ('status', models.CharField(max_length=50)),
-                ('timeout', models.PositiveIntegerField(default=0)),                
+                ('timeout', models.PositiveIntegerField(null=True)),                
                 ('type', models.TextField()),
             ],
             options={

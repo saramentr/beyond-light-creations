@@ -8,13 +8,15 @@ class TodoSerializer(serializers.ModelSerializer):
 
   def create(self, validated_data):
     # Once the request data has been validated, we can create a todo item instance in the database
-    return Todo.objects.create(
-      type=validated_data.get('type')
-    )
+    return Todo.objects.create(**validated_data)
 
   def update(self, instance, validated_data):
      # Once the request data has been validated, we can update the todo item instance in the database
     instance.type = validated_data.get('type', instance.type)
+    instance.result = validated_data.get('result', instance.result)
+    instance.status = validated_data.get('status', instance.status)
+    instance.timeout = validated_data.get('timeout', instance.timeout)
+    
     instance.save()
     return instance
 
